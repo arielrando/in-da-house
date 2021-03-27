@@ -1,3 +1,8 @@
+# Ariel Rando (DNI 36620374) - proyecto para curso de React para CoderHouse
+
+# Idea
+crear un e-commerce para una disqueria (CDs y vinilos)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
