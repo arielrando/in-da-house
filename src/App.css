@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .App-logo {
@@ -9,19 +9,21 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    /*animation: App-logo-spin infinite 20s linear;*/
+    width: 60px;
+    height: 100%;
   }
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: #ffffff;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /*align-items: center;
+  justify-content: center;*/
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .App-link {
@@ -35,4 +37,20 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.ItemListContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.textCd{
+  text-align: center;
+}
+
+.coverCd{
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

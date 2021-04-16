@@ -1,13 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import NavBar from './Components/NavBar'
+import ItemListContainer from './Container/ItemListContainer'
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <NavBar />
+        {/*<img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          test.
         </p>
         <a
           className="App-link"
@@ -16,7 +20,8 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a>*/}
+        <ItemListContainer greeting={'Bienvenidos! Abrimos pronto!'}/>
       </header>
     </div>
   );
