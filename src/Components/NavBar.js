@@ -8,7 +8,7 @@ const NavBar = () => {
             {/*<img src={logo} className="App-logo" alt="logo" />*/}
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
                 <a className="navbar-brand" href="#">
-                    <img src={logo} width="60" height="60" class="d-inline-block align-top" alt=""/>
+                    <img src={logo} width="60" height="60" className="d-inline-block align-top" alt=""/>
                 </a>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">

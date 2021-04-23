@@ -1,27 +1,21 @@
-import React from 'react'
+import React,{Component, useState, useEffect} from 'react'
+import ItemList from '../Components/ItemList'
 
-const cd = [
-    {name : 'Discovery', band: 'Daft Punk', image:'cat-0001.jpg'},
-    {name : 'Toxicity', band: 'System of a down', image:'cat-0002.jpg'}, 
-    {name : 'Future Nostalgia', band: 'Dua Lipa', image:'cat-0003.jpg'}];
+export default function ItemListContainer ({greeting}) {
 
-const listItems = cd.map((item) =>
-    <div className="col-4"><img className="coverCd" src={'temp/'+item.image} /> <p className="textCd">{item.name}</p><p className="textCd">{item.band}</p></div>
-);
+    const cd = [
+        {name : 'Toxicity', band: 'System of a down', image:'cat-0002.jpg', tipo:'CD', precio:'600'},
+        {name : 'Discovery', band: 'Daft Punk', image:'cat-0001.jpg', tipo:'Vinilo', precio:'25.000'},
+        {name : 'Future Nostalgia', band: 'Dua Lipa', image:'cat-0003.jpg', tipo:'Vinilo', precio:'7.500'}
+    ];
 
-const ItemListContainer = ({greeting}) => {
     return(
         <>
-        <div className="ItemListContainer">  
-            <p>{greeting}</p>
-        </div>
-        <div className='container'>
-                <div className='row'>
-                    {listItems}
-                </div>
+            <div className="ItemListContainer">  
+                <p>{greeting}</p>
             </div>
+            <ItemList items={cd} />
         </>  
-        )
-    }
+    )
+}
 
-export default ItemListContainer
