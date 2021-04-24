@@ -2,7 +2,8 @@ import React from 'react'
 import logo from '../Images/logo.png';
 import CartWidget from './CartWidget'
 
-const NavBar = () => {
+
+const NavBar = ({stockCarrito}) => {
     return(
         <div className="NavBar">
             {/*<img src={logo} className="App-logo" alt="logo" />*/}
@@ -27,7 +28,7 @@ const NavBar = () => {
                     </ul>
                 </div>
                 <a className="navbar-brand" href="#">
-                    <CartWidget />
+                    <CartWidget carritoNumber={stockCarrito}/>
                 </a>
             </nav>
 
