@@ -1,35 +1,39 @@
 import React from 'react'
 import logo from '../Images/logo.png';
 import CartWidget from './CartWidget'
+import { Link } from "react-router-dom";
 
 
 const NavBar = ({stockCarrito}) => {
     return(
         <div className="NavBar">
-            {/*<img src={logo} className="App-logo" alt="logo" />*/}
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-                <a className="navbar-brand" href="#">
+                <Link to="/">
                     <img src={logo} width="60" height="60" className="d-inline-block align-top" alt=""/>
-                </a>
+                    </Link>
+                
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
                     <li className="nav-item active">
-                        <a className="nav-link" href="#">Inicio <span className="sr-only">(current)</span></a>
+                    <Link to="/">
+                        <p className="nav-link" href="#">Inicio <span className="sr-only">(current)</span></p>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">CDs y Vinilos</a>
+                    <Link to="/category/Vinilo">
+                        <p className="nav-link" href="#">Vinilos</p>
+                        </Link>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#">Merch</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Nosotros</a>
+                    <Link to="/category/CD">
+                        <p className="nav-link" href="#">CDs</p>
+                        </Link>
                     </li>
                     </ul>
                 </div>
-                <a className="navbar-brand" href="#">
+                <p className="navbar-brand" >
                     <CartWidget carritoNumber={stockCarrito}/>
-                </a>
+                </p>
             </nav>
 
         </div>
