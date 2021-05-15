@@ -9,11 +9,8 @@ export default function ItemListContainer ({greeting}) {
         {id : 2, name : 'Discovery', band: 'Daft Punk', image:'cat-0001.jpg', tipo:'Vinilo', precio:'25.000'},
         {id : 3, name : 'Future Nostalgia', band: 'Dua Lipa', image:'cat-0003.jpg', tipo:'Vinilo', precio:'7.500'}
     ];
-    
-
 
     return(
-
         <>
             <div className="ItemListContainer">  
                 <p>{greeting}{id}</p>
