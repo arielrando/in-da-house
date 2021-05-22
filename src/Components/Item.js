@@ -11,7 +11,7 @@ const Item = ({id, name, band, image, tipo, precio, path}) => {
             <div className="col-4">
                 <div className="card">
                 <Link to={`/item/${id}`}>
-                    <img className="card-img-top" src={path+image} alt="album"/>
+                    <img className="card-img-top" src={image} alt="album"/>
                     </Link>
                     <div className="card-body">
                         <h4 className="card-title"><p title="View Product"><b>{name}</b></p>({tipo})</h4>

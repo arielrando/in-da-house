@@ -19,12 +19,12 @@ const NavBar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/category/Vinilo">
+                            <Link to="/category/vinilo">
                                 <p className="nav-link" href="#">Vinilos</p>
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to="/category/CD">
+                            <Link to="/category/cd">
                                 <p className="nav-link" href="#">CDs</p>
                             </Link>
                         </li>

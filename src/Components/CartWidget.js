@@ -19,7 +19,8 @@ const CartWidget = () => {
     
     return(
         <>
-            <Link to="/carrito"><img className='imgCarrito' src={carrito} width="30" height="30"  alt="carrito"/></Link><span>{cartTotal}</span>
+            <Link to="/carrito"><img className='imgCarrito' src={carrito} width="30" height="30"  alt="carrito"/></Link>
+            {cartTotal>0?(<span>{cartTotal}</span>):("")}
         </>  
         )
     }

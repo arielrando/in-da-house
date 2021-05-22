@@ -2,60 +2,58 @@ import React, { useState, useEffect } from 'react'
 import Item from './Item'
 import { useParams } from "react-router-dom";
 import { useLoading, Audio } from '@agney/react-loading';
+import { getFirestore} from '../Libs/Firebase/Firebase';
 
-const ItemList = ({items}) => {
+const ItemList = () => {
     const { id } = useParams();
     const { containerProps, indicatorEl } = useLoading({
         loading: true,
         indicator: <Audio width="20" />,
       });
 
-    const [listItems, setListItems] = useState(()=>{return (<div className="col-12" align="center"><p>Cargando {indicatorEl}</p></div>)});
-
-    const tareaAsyc = new Promise((resolve, reject)=>
-        {
-            setTimeout(()=> {
-                return resolve(items)
-            }, 3000);
-        }
-    ) 
+    const db = getFirestore();
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [listItems, setListItems] = useState();
 
     useEffect(()=>{
-        setListItems(()=>{return (<div className="col-12" align="center"><p>Cargando {indicatorEl}</p></div>)});
-        tareaAsyc.then((res) =>{
+        setLoading(true);
 
-        if(id){
-            let cdTemp = [];
-            items.map((val, idx) =>{
-                 if(val.tipo === id){
-                    cdTemp.push(val);
-                 } 
+        const dbCollection = db.collection('items');
+        const itemsCollection = id ? dbCollection.where("tipo","==",id) : dbCollection;
+
+        itemsCollection.get()
+            .then(prods =>{
+                let itemsTemp = prods.docs.map(item =>({
+                    id : item.id,
+                    ...item.data()
+                }))
+                setItems(itemsTemp.sort(() => Math.random() - 0.5));
             })
-            setListItems( cdTemp.map((val, idx) =>{
-                return(
-                    <Item key={idx} id={val.id} name={val.name} band={val.band} image={val.image} tipo={val.tipo} precio={val.precio} path={'../temp/'} />
-                )  
-            })
-            );
-        }else{
-            setListItems( items.map((val, idx) =>{
-                return(
-                    <Item key={idx} id={val.id} name={val.name} band={val.band} image={val.image} tipo={val.tipo} precio={val.precio} path={'temp/'} />
-                )  
-            })
-            );
-        }
-    },(rej)=>{
-        console.log('paso algo->')
-        console.log(rej)
-    })
     },[id])
+
+    useEffect(()=>{
+        setListItems( items.map((val, idx) =>{
+            return(
+                <Item key={idx} id={val.id} name={val.name} band={val.band} image={val.image} tipo={val.tipo} precio={val.precio} path={'temp/'} />
+            )  
+        })
+        );
+        setLoading(false);
+    },[items])
 
     return(
         <React.Fragment>
             <div className='container'>
                 <div className='row'>
-                    {listItems}
+                {loading ?(
+                        <div className="col-12" align="center"><p>Cargando {indicatorEl}</p></div>
+                    ):(
+                        <>
+                        {listItems}
+                        </>
+                    )
+                }
                 </div>
             </div>
         </React.Fragment> 
