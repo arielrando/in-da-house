@@ -1,7 +1,20 @@
 # Ariel Rando (DNI 36620374) - proyecto para curso de React para CoderHouse
 
-# Idea
+## Idea
 crear un e-commerce para una disqueria (CDs y vinilos)
+
+El sitio cuenta con una vista de todos los productos que el mismo puede filtrarse para ver los de un solo tipo (vinilo o cd) y se pueden agregar de manera individual al carrito de compra
+
+Luego hay una vista dedicada para visualizar cada producto individualmente, con su precio y la posibilidad de agregar al carrito de compra pero por cantidad (no uno solo)
+
+Por ultimo esta la vista del carrito, donde podremos visualizar todos los producto agregados al carrito, quitarlos, borrar todo el carrito o finalizar la compra.
+
+## Items
+Todos los items visualizados esta en una base de datos en firebase
+
+## Plugins
+Firebase
+Bootstrap
 
 # Getting Started with Create React App
 

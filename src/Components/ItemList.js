@@ -47,7 +47,7 @@ const ItemList = () => {
             <div className='container'>
                 <div className='row'>
                 {loading ?(
-                        <div className="col-12" align="center"><p>Cargando {indicatorEl}</p></div>
+                        <div className="col-12" align="center">Cargando <span {...containerProps}>{indicatorEl}</span></div>
                     ):(
                         <>
                         {listItems}

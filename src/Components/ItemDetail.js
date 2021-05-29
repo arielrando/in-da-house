@@ -1,4 +1,4 @@
-import React,{useEffect, useState, useContext} from 'react'
+import React,{ useState} from 'react'
 import '../App.css';
 import ItemCount from './ItemCount';
 import { Link } from "react-router-dom";
@@ -26,7 +26,7 @@ const ItemDetail = ({id, name, band, image, tipo, precio, tracklist, spotifyId})
         <h5>{tipo}</h5>
         <p className="mb-2 text-muted text-uppercase small">{band}</p>
         <p><span className="mr-1"><strong>${precio}</strong></span></p>
-        <iframe src={`https://open.spotify.com/embed/album/${spotifyId}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+        <iframe title="spotifyFrame" src={`https://open.spotify.com/embed/album/${spotifyId}`} width="300" height="380" frameBorder="0" allowtransparency="true" allow="encrypted-media"></iframe>
         <hr/>
         {mostrarIrCarrito ? (
           <Link to="/carrito">

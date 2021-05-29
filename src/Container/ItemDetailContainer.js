@@ -32,7 +32,7 @@ export default function ItemDetailContainer () {
         <>
             <div className="ItemDetailContainer">  
             {Object.keys(item).length==0 ? (
-                <div className="col-12" align="center"><p>Cargando {indicatorEl}</p></div>
+                <div className="col-12" align="center">Cargando <span {...containerProps}>{indicatorEl}</span></div>
             ) : (
                 <ItemDetail id={item.id} name={item.name} band={item.band} image={item.imageProduct} tipo={item.tipo} precio={item.precio} tracklist={item.tracklist} spotifyId={item.spotifyId} />
             )}

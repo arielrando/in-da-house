@@ -12,6 +12,7 @@ const CartWidget = () => {
         if(cart && cart.length > 0){
             cart.map((val, idx) =>{
                 newTotal += val.cantidad;
+                return null;
            })
         }
        setCartTotal(newTotal);
