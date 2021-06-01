@@ -29,6 +29,7 @@ const ItemList = () => {
                     ...item.data()
                 }))
                 setItems(itemsTemp.sort(() => Math.random() - 0.5));
+                setLoading(false);
             })
     },[id])
 
@@ -39,7 +40,7 @@ const ItemList = () => {
             )  
         })
         );
-        setLoading(false);
+        
     },[items])
 
     return(
