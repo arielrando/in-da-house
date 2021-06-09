@@ -2,6 +2,7 @@ import React, { useState, useEffect,useContext } from 'react'
 import { CartContext } from '../Context/CartContext';
 import  CartListItems from './CartListItems';
 import  CartListData from './CartListData';
+import  CartListDetails from './CartListDetails';
 import { useLoading, Audio } from '@agney/react-loading';
 import { getFirestore} from '../Libs/Firebase/Firebase';
 import firebase from 'firebase/app';
@@ -22,16 +23,19 @@ const CartList = () => {
     const [items, setItems] = useState([]);
     const [order, setOrder] = useState([]);
     const [idOrder, setIdOrder] = useState(0);
+    const [imagenes, setImagenes] = useState([]);
     const [banderaLoding, setBanderaLoding] = useState(false);
     const [usuario, setUsuario] = useState({name:"",phone:"",email:""});
     const tareaAsyc = new Promise((resolve, reject)=>
         {
             let cdTemp = [];
+            let imagesTemp = [];
             const dbCollection = db.collection('items');
             let promesa = cart.map(async (val, idx) =>{
                 const itemCollection = dbCollection.doc(val.id);
                 const numFruit = await itemCollection.get()
                     .then(prod =>{
+                        imagesTemp[prod.id]=prod.data().image;
                         cdTemp.push({
                             id : prod.id,
                             cantidad:val.cantidad,
@@ -42,7 +46,7 @@ const CartList = () => {
                     
                     return numFruit;
             });
-        Promise.all(promesa).then(() => {return resolve(cdTemp);});
+        Promise.all(promesa).then(() => { return resolve({"cd":cdTemp,"imagenes":imagesTemp});});
         }
     ) 
 
@@ -52,12 +56,13 @@ const CartList = () => {
             let totalTemp =  0
             tareaAsyc.then((res) =>{
                 setBanderaLoding(true);
-                setItems(res);
-                setListItems( res.map((val, idx) =>{
+                setItems(res.cd);
+                setImagenes(res.imagenes);
+                setListItems( res.cd.map((val, idx) =>{
                     totalTemp =  totalTemp+val.cantidad*val.precio;
                     return(
-                        <tr>
-                            <td>{val.name}</td>
+                        <tr key={idx}>
+                            <td><img src={res.imagenes[val.id]} alt={`imagen_${val.name}`} width="40" height="40"/> {val.name}</td>
                             <td>{val.cantidad}</td>
                             <td>${val.cantidad*val.precio}</td>
                             <td><button  className="btn btn-outline-secondary" onClick={() => removeItem(val.id)}>Quitar</button></td>
@@ -93,6 +98,10 @@ const CartList = () => {
         setEstado('items');
     }
 
+    const pasaAdetalles = () => {
+        setEstado('detalles');
+    }
+
     const createOrder = () => {
         setOrder({
             buyer : usuario,
@@ -118,6 +127,8 @@ const CartList = () => {
                 })
         }
     },[order])
+
+    
 
     const estadoSwitch = (estado) => {
         switch(estado) {
@@ -145,7 +156,11 @@ const CartList = () => {
                 );
             case 'usuario':
                 return (
-                    <CartListData  handleButton={createOrder} handleButtonVolver={pasaAitems} handleUsuario={setUsuario} usuario={usuario}/>
+                    <CartListData  handleButton={pasaAdetalles} handleButtonVolver={pasaAitems} handleUsuario={setUsuario} usuario={usuario}/>
+                );
+            case 'detalles':
+                return (
+                    <CartListDetails  handleButton={createOrder} handleButtonVolver={pasaAdatosUsuario} items={items} usuario={usuario} total={total} imagenes={imagenes}/>
                 );
             case 'errorCompra':
                 return (

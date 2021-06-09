@@ -64,3 +64,8 @@
 .carritoTabla{
   width: 100%;
 }
+
+.mensajeError{
+  color: red;
+  font-size: small;
+}
