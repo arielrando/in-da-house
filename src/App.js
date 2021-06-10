@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 
 function App() {
+  document.title = "In Da House";
   return (
     <div className="App">
       <header className="App-header">
