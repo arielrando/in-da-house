@@ -2,12 +2,12 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 
 const app = firebase.initializeApp({
-    apiKey: "AIzaSyBO-IUpZSe2mRoGkaUAyquhPt4aOngR9r8",
-    authDomain: "in-da-house-coderhouse.firebaseapp.com",
-    projectId: "in-da-house-coderhouse",
-    storageBucket: "in-da-house-coderhouse.appspot.com",
-    messagingSenderId: "564104854155",
-    appId: "1:564104854155:web:8a647aa40a4880d04e728e"
+    apiKey: process.env.REACT_APP_API_KEY ,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN ,
+    projectId: process.env.REACT_APP_PROJECT_ID ,
+    storageBucket: process.env.REACT_APP_STORAGE_BUCKET ,
+    messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID ,
+    appId: process.env.REACT_APP_APP_ID 
   });
 
   export function getFirebase() {
